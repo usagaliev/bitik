@@ -1,0 +1,47 @@
+@import './variables';
+@import './fonts';
+//
+//body {
+//  margin: 0;
+//  font-family: 'Segoe UI', sans-serif;
+//  background-color: $bg;
+//  color: $text-dark;
+//}
+//
+//.modal {
+//  @include center;
+//  position: fixed;
+//  inset: 0;
+//  background-color: rgba(0, 0, 0, 0.6);
+//
+//  &__content {
+//    background: white;
+//    padding: 2rem;
+//    border-radius: $radius;
+//    max-width: 400px;
+//    width: 90%;
+//    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+//  }
+//
+//  input {
+//    margin-top: 1rem;
+//    width: 100%;
+//    padding: 0.5rem;
+//    border-radius: $radius;
+//    border: 1px solid #ccc;
+//  }
+//
+//  button {
+//    margin-top: 1rem;
+//    background-color: $primary;
+//    color: white;
+//    border: none;
+//    padding: 0.6rem 1rem;
+//    border-radius: $radius;
+//    cursor: pointer;
+//
+//    &:hover {
+//      background-color: darken($primary, 10%);
+//    }
+//  }
+//}
