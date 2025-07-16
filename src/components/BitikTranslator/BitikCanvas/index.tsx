@@ -134,46 +134,59 @@ export const BitikCanvas: React.FC<BitikCanvasProps> = ({ bitikText, tshirtImage
 				flexWrap="wrap"
 				align="center"
 				justify="flex-start"
+				direction='column'
 			>
-				<Flex direction="column" align="flex-start">
-					<Text fontSize="sm" fontWeight="medium">
-						Цвет текста:
-					</Text>
-					<Input
-						type="color"
-						value={textColor}
-						onChange={(e) => setTextColor(e.target.value)}
-						width="3rem"
-						padding="0"
-						border="none"
-						bg="transparent"
-						className='text-base'
-					/>
+				<Flex
+					direction='row'
+					align="center"
+					justify="flex-start"
+				>
+					<Flex direction="column" align="flex-start" width='100%'>
+						<Text fontSize="sm" fontWeight="medium">
+							Цвет текста:
+						</Text>
+						<Input
+							type="color"
+							value={textColor}
+							onChange={(e) => setTextColor(e.target.value)}
+							width="3rem"
+							padding="0"
+							border="none"
+							bg="transparent"
+							className='text-base'
+						/>
+					</Flex>
+
+					<Flex direction="column" minW="200px">
+						<Text fontSize="sm" fontWeight="medium">
+							Размер текста: {fontSize}px
+						</Text>
+						<Slider
+							aria-label="font-size-slider"
+							min={10}
+							max={100}
+							step={1}
+							value={fontSize}
+							onChange={(val) => setFontSize(val)}
+						>
+							<SliderTrack>
+								<SliderFilledTrack />
+							</SliderTrack>
+							<SliderThumb />
+						</Slider>
+					</Flex>
 				</Flex>
 
-				<Flex direction="column" minW="200px">
-					<Text fontSize="sm" fontWeight="medium">
-						Размер текста: {fontSize}px
-					</Text>
-					<Slider
-						aria-label="font-size-slider"
-						min={10}
-						max={100}
-						step={1}
-						value={fontSize}
-						onChange={(val) => setFontSize(val)}
-					>
-						<SliderTrack>
-							<SliderFilledTrack />
-						</SliderTrack>
-						<SliderThumb />
-					</Slider>
+				<Flex
+					direction='row'
+					align="center"
+					justify="flex-start"
+				>
+					<Button onClick={draw}>🖨 Нанести на футболку</Button>
+					<Button onClick={handleDownload} colorScheme="blue">
+						📥 Скачать изображение
+					</Button>
 				</Flex>
-
-				<Button onClick={draw}>🖨 Нанести битик</Button>
-				<Button onClick={handleDownload} colorScheme="blue">
-					📥 Скачать
-				</Button>
 			</Flex>
 
 			<Box

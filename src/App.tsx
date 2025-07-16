@@ -4,7 +4,6 @@ import {JSX} from "react";
 import BitikTranslate from "./pages/BitikTranslate.tsx";
 
 function App() {
-  console.log('App component loaded');
   return (
   <BrowserRouter>
     <Routes>
