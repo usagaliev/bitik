@@ -1,24 +1,18 @@
-import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
-import PageQr from "./pages/PageQr.tsx";
-import {JSX} from "react";
-import BitikTranslate from "./pages/BitikTranslate.tsx";
-import {Button} from "@chakra-ui/react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import type { JSX } from 'react';
+import PageQr from './pages/PageQr.tsx';
+import BitikTranslate from './pages/BitikTranslate.tsx';
+import HomePage from './pages/HomePage.tsx';
 
-function App() {
+function App(): JSX.Element {
   return (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/qr/:id" element={<PageQr /> as JSX.Element} />
-      <Route path="*" element={<div>404</div>} />
-      <Route path="/" element={
-        <div>
-          Welcome to the QR Code App
-          <Navigate to={'/bitik'} replace>
-            <Button title='Переводчик в Битик' />
-          </Navigate>
-        </div>} />
-      <Route path="/bitik" element={<BitikTranslate />} />
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/bitik" element={<BitikTranslate />} />
+        <Route path="/qr/:id" element={<PageQr /> as JSX.Element} />
+        <Route path="*" element={<div>404</div>} />
+      </Routes>
     </BrowserRouter>
   );
 }
