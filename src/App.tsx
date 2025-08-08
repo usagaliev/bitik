@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { JSX } from 'react';
+import type { JSX } from 'react';
 import PageQr from './pages/PageQr.tsx';
 import BitikTranslate from './pages/BitikTranslate.tsx';
 import HomePage from './pages/HomePage.tsx';
