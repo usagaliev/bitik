@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import {JSX, useState} from "react";
+import {useState} from "react";
+import type {JSX} from "react";
 import PassphraseModal from "../components/PassphraseModal";
-import AnimatedBackground from "../components/AnimatedBackground";
 import Content from "../components/Content";
 import {RegularBackground} from "../components/RegularBackground";
 import bg from "../assets/content/bg.png";
@@ -55,7 +55,7 @@ export default function QrPage(): JSX.Element | null {
 			<div style={{fontFamily: 'Rosarium, sans-serif', zIndex: 999}}>
 				Привет, Бишкек! Hello, Bishkek!
 			</div>
-			{/*<AnimatedBackground gradientColors={gradientColors} />*/}
+                        {/*<AnimatedBackground gradientColors={gradientColors} />*/}
 			<RegularBackground/>
 
 			<h1 className="text-4xl text-white font-bold drop-shadow-lg mb-2">{data.title}</h1>

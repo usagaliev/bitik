@@ -1,4 +1,3 @@
-import React from 'react';
 import {BitikTranslator} from "../components/BitikTranslator";
 
 const BitikTranslate = () => {

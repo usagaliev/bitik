@@ -1,8 +1,20 @@
 import { motion } from "framer-motion";
 import {ResponsiveImage} from "../ResponsiveImage";
 
-export default function Content({ data }: { data: any }) {
-	const { name, story, photos = [], location, mediaLink } = data;
+interface ContentData {
+        name?: string;
+        story?: string;
+        photos?: string[];
+        location?: string;
+        mediaLink?: string;
+}
+
+interface ContentProps {
+        data: ContentData;
+}
+
+export default function Content({ data }: ContentProps) {
+        const { name, story, photos = [], location, mediaLink } = data;
 
 	return (
 		<motion.div
