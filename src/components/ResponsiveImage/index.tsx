@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-export const ResponsiveImage = ({ src, alt, className }: { src: string; alt: string }) => (
+export const ResponsiveImage = ({ src, alt, className }: { src: string; alt: string; className?: string }) => (
 	<img
 		src={src}
 		alt={alt}

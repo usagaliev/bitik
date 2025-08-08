@@ -10,7 +10,7 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/bitik" element={<BitikTranslate />} />
-        <Route path="/qr/:id" element={<PageQr /> as JSX.Element} />
+        <Route path="/qr/:id" element={<PageQr />} />
         <Route path="*" element={<div>404</div>} />
       </Routes>
     </BrowserRouter>

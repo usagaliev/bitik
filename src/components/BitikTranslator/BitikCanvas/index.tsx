@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import {
 	Box,
 	Button,
@@ -35,14 +35,6 @@ export const BitikCanvas: React.FC<BitikCanvasProps> = ({ bitikText, tshirtImage
 		});
 	}, [width]);
 
-	const collectData = () => ({
-		bitikText,
-		fontSize,
-		textColor,
-		textPos,
-		tshirtImage,
-	});
-
 	const handleDownload = () => {
 		const canvas = canvasRef.current;
 		if (!canvas) return;
@@ -52,13 +44,13 @@ export const BitikCanvas: React.FC<BitikCanvasProps> = ({ bitikText, tshirtImage
 		link.click();
 	};
 
-	const draw = () => {
-		const canvas = canvasRef.current;
-		if (!canvas) return;
-		const ctx = canvas.getContext('2d');
-		if (!ctx) return;
+        const draw = useCallback(() => {
+                const canvas = canvasRef.current;
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                if (!ctx) return;
 
-		canvas.width = width > 560 ? 500 : 300;
+                canvas.width = width > 560 ? 500 : 300;
 		canvas.height = width > 560 ? 500 : 300;
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -67,24 +59,22 @@ export const BitikCanvas: React.FC<BitikCanvasProps> = ({ bitikText, tshirtImage
 
 		ctx.font = `bold ${fontSize}px "Segoe UI Symbol", serif`;
 		ctx.fillStyle = textColor;
-		ctx.textAlign = 'center';
-		ctx.fillText(bitikText, textPos.x, textPos.y);
+                ctx.textAlign = 'center';
+                ctx.fillText(bitikText, textPos.x, textPos.y);
+        }, [bitikText, fontSize, textColor, textPos, width]);
 
-		collectData(); // could be sent to backend later
-	};
+        useEffect(() => {
+                const img = new Image();
+                img.src = tshirtImage;
+                img.onload = () => {
+                        imgRef.current = img;
+                        draw();
+                };
+        }, [tshirtImage, draw]);
 
-	useEffect(() => {
-		const img = new Image();
-		img.src = tshirtImage;
-		img.onload = () => {
-			imgRef.current = img;
-			draw();
-		};
-	}, [tshirtImage]);
-
-	useEffect(() => {
-		draw();
-	}, [textPos, fontSize, textColor]);
+        useEffect(() => {
+                draw();
+        }, [textPos, fontSize, textColor, draw]);
 
 	const getEventCoords = (e: React.MouseEvent | React.TouchEvent) => {
 		const rect = canvasRef.current?.getBoundingClientRect();
@@ -189,21 +179,22 @@ export const BitikCanvas: React.FC<BitikCanvasProps> = ({ bitikText, tshirtImage
 				</Flex>
 			</Flex>
 
-			<Box
-				mt={4}
-				border="1px solid #ccc"
-				w="100%"
-				h="auto"
-				overflow="hidden"
-				backgroundColor='#f9f9f9'
-				align="center"
-				justify="center"
-			>
-				<canvas
-					ref={canvasRef}
-					style={{
-						touchAction: 'none',
-						cursor: isDragging ? 'grabbing' : 'grab',
+                        <Box
+                                mt={4}
+                                border="1px solid #ccc"
+                                w="100%"
+                                h="auto"
+                                overflow="hidden"
+                                backgroundColor='#f9f9f9'
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                        >
+                                <canvas
+                                        ref={canvasRef}
+                                        style={{
+                                                touchAction: 'none',
+                                                cursor: isDragging ? 'grabbing' : 'grab',
 					}}
 					onMouseDown={handleStart}
 					onMouseMove={handleMove}

@@ -1,10 +1,9 @@
-import React from 'react';
 import classes from './RegularBackground.module.scss';
 import clsx from "clsx";
 import {useWindowWidth} from "../../hooks/useWindowWidth.tsx";
 
 export const RegularBackground = () => {
-	const {isPhone, width } = useWindowWidth()
+        const {isPhone } = useWindowWidth()
 
 	const elementPosition = [
 		{
