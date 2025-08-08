@@ -49,7 +49,7 @@ export const BitikTranslator: React.FC = () => {
 						border: '1px solid #ccc',
 					}}
 				/>
-			</ Box>
+                        </Box>
 			<div>
 				<div style={{fontSize: '2rem', marginTop: '0.5rem'}}>{output}</div>
 			</div>
