@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - work
+      - examplebranch
   workflow_dispatch:
 
 permissions:
